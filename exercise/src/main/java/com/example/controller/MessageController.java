@@ -18,6 +18,7 @@ import com.example.classes.Clients;
 public class MessageController {
      @RequestMapping("/hello")
      public String hello() {
+         System.out.println("should be working");
         return "hello";
      }
 

@@ -29,9 +29,10 @@ public class Clients {
         try {
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
-            //List<String> clientes = new ArrayList<String>();
+            List<String> clientes = new ArrayList<String>();
             for (Object o : a ){
                 JSONObject customer = (JSONObject) o;
+                //String cliente = new String();
                 String country = (String) customer.get("country");
                 String lastname = (String) customer.get("last");
                 String fecha = (String) customer.get("created_at");
@@ -39,15 +40,16 @@ public class Clients {
                 Long idClient = (Long) customer.get("id");
                 String mail = (String) customer.get("email");
                 String name = (String) customer.get("first");
-                           
-                //int size = clientes.size(); 
-                //String[] stringArray = clientes.toArray(new String[size]);
-
-                System.out.println(name + " " + lastname);
-                System.out.println(idClient);
-                System.out.println(mail + " " + company);
-                System.out.println(country + " " + fecha );      
+                clientes.add(country);
+                clientes.add(lastname);
+                clientes.add(fecha);
+                clientes.add(company);
+                clientes.add(idClient.toString());
+                clientes.add(mail);
+                clientes.add(name);
+                                
             }
+            //remove """ of the array
             return a.toString();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
