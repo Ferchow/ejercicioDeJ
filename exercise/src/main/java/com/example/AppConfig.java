@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableConfigurationProperties
+//@EnableConfigurationProperties
 public class AppConfig {
     @Autowired
     DataSourceProperties dataSourceProperties;
 
-    @Bean
+    /* @Bean
     DataSource realDataSource() {
         DataSource dataSource = DataSourceBuilder
                 .create(this.dataSourceProperties.getClassLoader())
@@ -33,5 +33,5 @@ public class AppConfig {
     @Primary
     DataSource dataSource() {
         return new DataSourceSpy(realDataSource());
-    }
+    } */
 }
