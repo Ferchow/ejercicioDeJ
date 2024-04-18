@@ -418,7 +418,7 @@ public class Main {
         int ch,ch2;
         char wish;
         x:
-        Clients.newCustomerH();
+        Clients.readClients();
         do{
 
         System.out.println("\nEnter your choice :\n1.Display room details\n2.Display room availability \n3.Book\n4.Order food\n5.Checkout\n6.Exit\n");

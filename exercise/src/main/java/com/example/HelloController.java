@@ -14,10 +14,10 @@ public class HelloController {
     //@Autowired
     //NamedParameterJdbcTemplate jdbcTemplate;
 
-    @GetMapping("/")
+    /* @GetMapping("/")
     public String hello() {
         return "hello";
-    }
+    } */
 
     @Data
     static class Result {

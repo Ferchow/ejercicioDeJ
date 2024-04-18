@@ -22,7 +22,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.example.classes.Clients;
 import com.example.classes.Rooms;
 
-
 public class Book {
     static Scanner sc = new Scanner(System.in);
 

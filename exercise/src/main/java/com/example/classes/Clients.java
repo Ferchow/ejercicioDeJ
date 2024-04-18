@@ -24,9 +24,11 @@ import com.fasterxml.jackson.core.JsonParseException;
 public class Clients {
 
     public static String readClients(){
+        String jsonCustomersPath = System.getProperty("user.dir");
+        jsonCustomersPath = jsonCustomersPath + "/customers.json";
         try {
             JSONParser parser = new JSONParser();
-            JSONArray a = (JSONArray) parser.parse(new FileReader("C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/customers.json"));
+            JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
             //List<String> clientes = new ArrayList<String>();
             for (Object o : a ){
                 JSONObject customer = (JSONObject) o;
@@ -71,7 +73,8 @@ public class Clients {
         try {
             //ObjectMapper mapper = new ObjectMapper();
             String key = "first"; //whatever
-            String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/customers.json";
+            String jsonCustomersPath = System.getProperty("user.dir");
+            jsonCustomersPath = jsonCustomersPath + "/customers.json";
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
             //System.out.println(a);
@@ -121,7 +124,8 @@ public class Clients {
         String correo = nombre + "." + apellido + "@test.com"; */
         
         try {
-            String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/customers.json";
+            String jsonCustomersPath = System.getProperty("user.dir");
+            jsonCustomersPath = jsonCustomersPath + "/customers.json";
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
             JSONObject customer = new JSONObject();
@@ -150,7 +154,8 @@ public class Clients {
     {
         //int idClient = 5;
         try {
-            String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/customers.json";
+            String jsonCustomersPath = System.getProperty("user.dir");
+            jsonCustomersPath = jsonCustomersPath + "/customers.json";
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
 

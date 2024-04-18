@@ -13,4 +13,5 @@ com\example\classes\Clients.class
 com\example\classes\Singleroom.class
 com\example\classes\Food.class
 com\example\classes\Rooms.class
+com\example\controller\HotelRController.class
 com\example\controller\MessageController.class

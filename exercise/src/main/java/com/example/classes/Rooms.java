@@ -15,10 +15,11 @@ public class Rooms {
     }
 
     public static String readHotelR(){
-        String path = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/rooms.json";
+        String jsonCustomersPath = System.getProperty("user.dir");
+        jsonCustomersPath = jsonCustomersPath + "/exercise/rooms.json";
         try {
             JSONParser parser = new JSONParser();
-            JSONArray a = (JSONArray) parser.parse(new FileReader(path));
+            JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
             for (Object o : a ){
                 JSONObject room = (JSONObject) o;
                 String name = (String) room.get("name");
@@ -61,7 +62,8 @@ public class Rooms {
             int sizeR = 2;
             int beds = 1; //whatever
             int idCstmr = 2;
-            String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/rooms.json";
+            String jsonCustomersPath = System.getProperty("user.dir");
+            jsonCustomersPath = jsonCustomersPath + "/exercise/rooms.json";
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
             //System.out.println(a);
@@ -115,7 +117,8 @@ public class Rooms {
         int beds = 3; //whatever
         
         try {
-            String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/rooms.json";
+            String jsonCustomersPath = System.getProperty("user.dir");
+            jsonCustomersPath = jsonCustomersPath + "/exercise/rooms.json";
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
             JSONObject customer = new JSONObject();
@@ -145,7 +148,8 @@ public class Rooms {
     {
         int idClient = 5;
         try {
-            String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/rooms.json";
+            String jsonCustomersPath = System.getProperty("user.dir");
+            jsonCustomersPath = jsonCustomersPath + "/exercise/rooms.json";
             JSONParser parser = new JSONParser();
             JSONArray a = (JSONArray) parser.parse(new FileReader(jsonCustomersPath));
 
