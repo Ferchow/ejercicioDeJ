@@ -48,6 +48,7 @@ public class Rooms {
         return null;
     };
 
+    @SuppressWarnings("unchecked")
     public static void editHotelR()
     {
         try {
@@ -104,6 +105,7 @@ public class Rooms {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void newRoom()
     {
         //ejemplo

@@ -18,7 +18,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import com.fasterxml.jackson.core.JsonParseException;
 
 
 public class Clients {
@@ -62,6 +61,7 @@ public class Clients {
         return null;
     };
 
+    @SuppressWarnings("unchecked")
     public static void editCustomers(String country, String apellido, Date date, String fecha, String company, String nombre, String correo)
     {
         /* String country = "Mexico";
@@ -114,6 +114,7 @@ public class Clients {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void newCustomerH(String country, String apellido, Date date, String fecha, String company, String nombre, String correo)
     {
         /* String country = "Mexico";

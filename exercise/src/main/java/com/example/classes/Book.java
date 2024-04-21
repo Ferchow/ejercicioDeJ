@@ -25,6 +25,7 @@ import com.example.classes.Rooms;
 public class Book {
     static Scanner sc = new Scanner(System.in);
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         String room, response;
         Boolean flag = true;
@@ -44,6 +45,7 @@ public class Book {
         bookRoom(Integer.parseInt(room), customers);
     }
 
+    @SuppressWarnings("unchecked")
     public static void bookRoom(int room, JSONArray customers){
         try {
             String jsonCustomersPath = "C:/Users/LIGHTDESA_14/Documents/ex/ejemplo/rooms.json";

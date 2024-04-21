@@ -1,8 +1,13 @@
 <template>
-  <!--v-container>
+  <v-container>
     <v-row class="text-center">
       <v-col cols="12">
-        
+        <v-img
+          :src="require('../assets/logo.svg')"
+          class="my-3"
+          contain
+          height="200"
+        />
       </v-col>
 
       <v-col class="mb-4">
@@ -82,201 +87,65 @@
           </a>
         </v-row>
       </v-col>
-    </v-row> -->
-  <div>
-    <v-toolbar flat color="white">
-      <v-toolbar-title>Clientes</v-toolbar-title>
-      <v-divider
-        class="mx-2"
-        inset
-        vertical
-      ></v-divider>
-      <v-spacer></v-spacer>
-      <v-dialog v-model="dialog" max-width="500px">
-        <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark class="mb-2" v-on="on">Nuevo Cliente</v-btn>
-        </template>
-        <v-card>
-          <v-card-title>
-            <span class="headline">{{ formTitle }}</span>
-          </v-card-title>
-
-          <v-card-text>
-            <v-container grid-list-md>
-              <v-layout wrap>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.first" label="Nombre"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.lastname" label="Apellido"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.email" label="email"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.country" label="País"></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md4>
-                  <v-text-field v-model="editedItem.company" label="Empresa"></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click="close">Cancelar</v-btn>
-            <v-btn color="blue darken-1" flat @click="save">Guardar</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-toolbar>
-    <v-data-table
-      :headers="headers"
-      :items="clientes"
-      hide-actions
-      class="elevation-1"
-    >
-      <template v-slot:items="props">
-        <td>{{ props.item.first }}</td>
-        <td class="text-xs-right">{{ props.item.lastname }}</td>
-        <td class="text-xs-right">{{ props.item.email }}</td>
-        <td class="text-xs-right">{{ props.item.country }}</td>
-        <td class="text-xs-right">{{ props.item.company }}</td>
-        <td class="justify-center layout px-0">
-          <v-icon
-            small
-            class="mr-2"
-            color="success"
-            @click="editItem(props.item)"
-          >
-            Editar
-          </v-icon>
-          <v-icon
-            small
-            color="error"
-            @click="deleteItem(props.item)"
-          >
-            Eliminar
-          </v-icon>
-        </td>
-      </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">Reset</v-btn>
-      </template>
-    </v-data-table>
-    <h3>{{msh}}</h3>
-  </div>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
   export default {
     name: 'HelloWorld',
+
     data: () => ({
-      dialog: false,
-      headers: [
-        { text: 'Nombre', align: 'left', sortable: false, value: 'first'},
-        { text: 'Apellido', value: 'last' },
-        { text: 'email', value: 'email' },
-        { text: 'País', value: 'country' },
-        { text: 'Empresa', value: 'company'},
-        { text: 'Actions', value: 'first', sortable: false}
+      ecosystem: [
+        {
+          text: 'vuetify-loader',
+          href: 'https://github.com/vuetifyjs/vuetify-loader',
+        },
+        {
+          text: 'github',
+          href: 'https://github.com/vuetifyjs/vuetify',
+        },
+        {
+          text: 'awesome-vuetify',
+          href: 'https://github.com/vuetifyjs/awesome-vuetify',
+        },
       ],
-      clientes: [],
-      msh:'this shit is not working',
-      editedIndex: -1,
-      editedItem: {
-        first: '',
-        lastname: '',
-        email: '',
-        country: '',
-        company: ''
-      },
-      defaultItem: {
-        first: '',
-        lastname: '',
-        email: '',
-        country: '',
-        company: ''
-      }
-    }
-  ),
-    mounted () {
-      fetch("~/api/messages/Customers")
-      .then((response) => response.text())
-      .then((data) => {
-        this.msh = data;        
-      })
-      //console.log(this.msh)
-    },
-    computed: {
-      formTitle () {
-        return this.editedIndex === -1 ? 'Nuevo Cliente' : 'Editar Cliente'
-      }
-    },
-
-    watch: {
-      dialog (val) {
-        val || this.close()
-      }
-    },
-
-    created () {
-      this.initialize()
-    },
-
-    methods: {
-      initialize () {
-        this.clientes = this.msh
-        /* [
-          {
-            country:"Switzerland",
-            last:"Veum",
-            created_at:"2014-12-25T04:06:27.981Z",
-            company:"Hilll, Mayert and Wolf",
-            id:1,
-            email:"isidro_von@hotmail.com",
-            first:"Torrey"
-          },
-          {
-            country:"Switzerland",
-            last:"Veum",
-            created_at:"2014-12-25T04:06:27.981Z",
-            company:"Hilll, Mayert and Wolf",
-            id:1,
-            email:"isidro_von@hotmail.com",
-            first:"Torrey"
-          }
-        ] */
-      },
-
-      editItem (item) {
-        this.editedIndex = this.clientes.indexOf(item)
-        this.editedItem = Object.assign({}, item)
-        this.dialog = true
-      },
-
-      deleteItem (item) {
-        const index = this.clientes.indexOf(item)
-        confirm('Are you sure you want to delete this item?') && this.clientes.splice(index, 1)
-      },
-
-      close () {
-        this.dialog = false
-        setTimeout(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        }, 300)
-      },
-
-      save () {
-        if (this.editedIndex > -1) {
-          Object.assign(this.clientes[this.editedIndex], this.editedItem)
-        } else {
-          this.clientes.push(this.editedItem)
-        }
-        this.close()
-      }
-    }
+      importantLinks: [
+        {
+          text: 'Documentation',
+          href: 'https://vuetifyjs.com',
+        },
+        {
+          text: 'Chat',
+          href: 'https://community.vuetifyjs.com',
+        },
+        {
+          text: 'Made with Vuetify',
+          href: 'https://madewithvuejs.com/vuetify',
+        },
+        {
+          text: 'Twitter',
+          href: 'https://twitter.com/vuetifyjs',
+        },
+        {
+          text: 'Articles',
+          href: 'https://medium.com/vuetify',
+        },
+      ],
+      whatsNext: [
+        {
+          text: 'Explore components',
+          href: 'https://vuetifyjs.com/components/api-explorer',
+        },
+        {
+          text: 'Select a layout',
+          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
+        },
+        {
+          text: 'Frequently Asked Questions',
+          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+        },
+      ],
+    }),
   }
 </script>
