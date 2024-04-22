@@ -1,0 +1,14 @@
+[
+    {
+       "id":1,
+       "idRoom":2,
+       "resPrice":1999.96,
+       "status":"ongoing",
+       "idcustomer":[
+          35
+       ],
+       "days":[
+         "2019-09-10", "2019-09-20"
+       ]
+    }
+ ]
